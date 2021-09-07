@@ -75,7 +75,21 @@ namespace LogicalProgramming
             Console.WriteLine("\tOutput:");
             if (IsAmountValid)
             {
-                Console.WriteLine("\tAmount = {0} \n\tNotes = {1}", amount, VendingMachine.VendingMachine.GetMinimumChange(amount));
+                int totalNotes = 0;
+                if (VendingMachine.VendingMachine.GetMinimumChange(amount))
+                {
+                    Console.WriteLine("\tAmount = {0}", amount);
+                    for (int i = 0; i < 9; i++)
+                    {
+                        if (VendingMachine.VendingMachine.noteCounter[i] != 0)
+                        {
+                            Console.WriteLine("\t" + VendingMachine.VendingMachine.notes[i] + " Notes = " +
+                                VendingMachine.VendingMachine.noteCounter[i]);
+                            totalNotes += VendingMachine.VendingMachine.noteCounter[i];
+                        }
+                    }
+                    Console.WriteLine("\tTotal Notes = {0}", totalNotes);
+                }
             }
             else
             {

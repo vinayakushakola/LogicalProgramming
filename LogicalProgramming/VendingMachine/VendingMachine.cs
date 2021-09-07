@@ -4,71 +4,28 @@ namespace LogicalProgramming.VendingMachine
 {
     class VendingMachine
     {
-        private const int ONE_THOUSAND = 1000;
-        private const int FIVE_HUNDRED = 500;
-        private const int ONE_HUNDRED = 100;
-        private const int FIFTY = 50;
-        private const int TEN = 10;
-        private const int FIVE = 5;
-        private const int TWO = 2;
-        private const int ONE = 1;
+        public static int[] notes = new int[] { 2000, 500, 200, 100, 50, 20, 10, 5, 2, 1 };
+        public static int[] noteCounter = new int[9];
 
         /// <summary>
         /// Logic for Minimum Notes Change
         /// </summary>
         /// <param name="amount"> Amount </param>
         /// <returns> No of Notes </returns>
-        public static int GetMinimumChange(int amount)
+        public static bool GetMinimumChange(int amount)
         {
-            int minimumNotes = 0;
-            while (amount != 0)
+            for (int i = 0; i < 9; i++)
             {
-                if (amount >= ONE_THOUSAND)
+                if (amount >= notes[i])
                 {
-                    amount -= ONE_THOUSAND;
-                    minimumNotes++;
-                }
-                else if (amount >= FIVE_HUNDRED)
-                {
-                    amount -= FIVE_HUNDRED;
-                    minimumNotes++;
-                }
-                else if (amount >= ONE_HUNDRED)
-                {
-                    amount -= ONE_HUNDRED;
-                    minimumNotes++;
-                }
-                else if (amount >= FIFTY)
-                {
-                    amount -= FIFTY;
-                    minimumNotes++;
-                }
-                else if (amount >= TEN)
-                {
-                    amount -= TEN;
-                    minimumNotes++;
-                }
-                else if (amount >= FIVE)
-                {
-                    amount -= FIVE;
-                    minimumNotes++;
-                }
-                else if (amount >= TWO)
-                {
-                    amount -= TWO;
-                    minimumNotes++;
-                }
-                else if (amount >= ONE)
-                {
-                    amount -= ONE;
-                    minimumNotes++;
-                }
-                else
-                {
-                    return 0;
+                    noteCounter[i] = amount / notes[i];
+                    amount = amount - noteCounter[i] * notes[i];
                 }
             }
-            return minimumNotes;
+            if (amount == 0)
+                return true;
+            else
+                return false;
         }
     }
 }
