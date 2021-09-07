@@ -16,13 +16,14 @@ namespace LogicalProgramming
                     Console.WriteLine("Choose any one option");
                     Console.WriteLine("\t1. Vending Machine");
                     Console.WriteLine("\t2. Day Of Week");
-                    Console.WriteLine("\t3. Exit");
+                    Console.WriteLine("\t3. Temperature Convertor");
+                    Console.WriteLine("\t4. Exit");
                     Console.Write("Enter choice = ");
                     int choice = Convert.ToInt32(Console.ReadLine());
                     switch (choice)
                     {
                         case 1:
-                            Console.WriteLine("\n\t========== 1. Vending Machine ==========\n");
+                            Console.WriteLine("\n\t========== 1. Vending Machine ==========");
                             CallVendingMachine();
                             break;
                         case 2:
@@ -30,10 +31,14 @@ namespace LogicalProgramming
                             CallDayOfWeek();
                             break;
                         case 3:
+                            Console.WriteLine("\n\t========== 3. Temperature Conversion ==========");
+                            CallTemperatureConvertor();
+                            break;
+                        case 4:
                             Console.WriteLine("\nThank You for visiting");
                             flag = false;
                             break;
-                        case 4:
+                        case 5:
                             Console.WriteLine("Invalid choice");
                             break;
                     }
@@ -89,6 +94,44 @@ namespace LogicalProgramming
             catch
             {
                 Console.WriteLine("\tInvalid date entered");
+            }
+        }
+
+        /// <summary>
+        /// Temperature Conversion input taking logic
+        /// </summary>
+        private static void CallTemperatureConvertor()
+        {
+            Console.Write("\tEnter temprature = ");
+            int temperature;
+            bool IsValidNo = int.TryParse(Console.ReadLine(), out temperature);
+            if (IsValidNo)
+            {
+                Console.WriteLine("\tChoose Conversion");
+                Console.WriteLine("\t\t1. Celsius to Fahrenheit");
+                Console.WriteLine("\t\t2. Fahrenheit to Celsius");
+                Console.Write("\tEnter choice = ");
+                int choice = 0;
+                choice = int.Parse(Console.ReadLine());
+                Console.WriteLine("\tOutput:");
+                switch (choice)
+                {
+                    case 1:
+                        int tempInFr = TemperatureConversion.TemperatureConvertor.CelsiusToFahrenheit(temperature);
+                        Console.WriteLine("\tCelsius {0} to Fahrenheit {1}", temperature, tempInFr);
+                        break;
+                    case 2:
+                        int tempInCe = TemperatureConversion.TemperatureConvertor.FahrenheitToCelsius(temperature);
+                        Console.WriteLine("\tFahrenheit {0} to Celcius {1}", temperature, tempInCe);
+                        break;
+                    default:
+                        Console.WriteLine("\tInvalid choice");
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("\tInvalid number entered");
             }
         }
 
