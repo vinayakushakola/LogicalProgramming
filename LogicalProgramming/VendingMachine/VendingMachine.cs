@@ -13,6 +13,11 @@ namespace LogicalProgramming.VendingMachine
         private const int TWO = 2;
         private const int ONE = 1;
 
+        /// <summary>
+        /// Logic for Minimum Notes Change
+        /// </summary>
+        /// <param name="amount"> Amount </param>
+        /// <returns> No of Notes </returns>
         public static int GetMinimumChange(int amount)
         {
             int minimumNotes = 0;
