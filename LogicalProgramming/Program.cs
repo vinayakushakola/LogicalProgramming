@@ -18,7 +18,8 @@ namespace LogicalProgramming
                     Console.WriteLine("\t2. Day Of Week");
                     Console.WriteLine("\t3. Temperature Convertor");
                     Console.WriteLine("\t4. Monthly Payment");
-                    Console.WriteLine("\t5. Exit");
+                    Console.WriteLine("\t5. Square Root");
+                    Console.WriteLine("\t6. Exit");
                     Console.Write("Enter choice = ");
                     int choice = Convert.ToInt32(Console.ReadLine());
                     switch (choice)
@@ -36,14 +37,18 @@ namespace LogicalProgramming
                             CallTemperatureConvertor();
                             break;
                         case 4:
-                            Console.WriteLine("\n\t========== 4. monthly Payemtn ==========");
+                            Console.WriteLine("\n\t========== 4. Monthly Payment ==========");
                             CallMonthlyPayment();
                             break;
                         case 5:
+                            Console.WriteLine("\n\t========== 4. Square Root ==========");
+                            CallSquareRoot();
+                            break;
+                        case 6:
                             Console.WriteLine("\nThank You for visiting");
                             flag = false;
                             break;
-                        case 6:
+                        default:
                             Console.WriteLine("Invalid choice");
                             break;
                     }
@@ -159,6 +164,26 @@ namespace LogicalProgramming
             catch
             {
                 Console.Write("Invalid value");
+            }
+        }
+
+        /// <summary>
+        /// Square Root input taking logic
+        /// </summary>
+        private static void CallSquareRoot()
+        {
+            int numSq;
+            Console.Write("\tEnter number = ");
+            bool IsValidNo = int.TryParse(Console.ReadLine(), out numSq);
+            Console.WriteLine("Output: ");
+            if (IsValidNo)
+            {
+                double squareRoot = SquareRoot.SquareRoot.GetSquareRoot(numSq);
+                Console.WriteLine("\tSquare Root = {0}", squareRoot);
+            }
+            else
+            {
+                Console.WriteLine("\tInvalid number entered");
             }
         }
 
