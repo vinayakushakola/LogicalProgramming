@@ -17,7 +17,8 @@ namespace LogicalProgramming
                     Console.WriteLine("\t1. Vending Machine");
                     Console.WriteLine("\t2. Day Of Week");
                     Console.WriteLine("\t3. Temperature Convertor");
-                    Console.WriteLine("\t4. Exit");
+                    Console.WriteLine("\t4. Monthly Payment");
+                    Console.WriteLine("\t5. Exit");
                     Console.Write("Enter choice = ");
                     int choice = Convert.ToInt32(Console.ReadLine());
                     switch (choice)
@@ -35,10 +36,14 @@ namespace LogicalProgramming
                             CallTemperatureConvertor();
                             break;
                         case 4:
+                            Console.WriteLine("\n\t========== 4. monthly Payemtn ==========");
+                            CallMonthlyPayment();
+                            break;
+                        case 5:
                             Console.WriteLine("\nThank You for visiting");
                             flag = false;
                             break;
-                        case 5:
+                        case 6:
                             Console.WriteLine("Invalid choice");
                             break;
                     }
@@ -132,6 +137,28 @@ namespace LogicalProgramming
             else
             {
                 Console.WriteLine("\tInvalid number entered");
+            }
+        }
+
+        /// <summary>
+        /// Monthly payment input taking logic
+        /// </summary>
+        private static void CallMonthlyPayment()
+        {
+            try
+            {
+                Console.Write("\tEnter principle amount = ");
+                int Principleamount = int.Parse(Console.ReadLine());
+                Console.Write("\tEnter No of year = ");
+                int NoOfYear = int.Parse(Console.ReadLine());
+                Console.Write("\tEnter Rate = ");
+                int Rate = int.Parse(Console.ReadLine());
+                double payment = MonthlyPayment.MonthlyPayment.CalculateMontlyPayment(Principleamount, NoOfYear, Rate);
+                Console.WriteLine("\tMonthly Payment = {0}", payment);
+            }
+            catch
+            {
+                Console.Write("Invalid value");
             }
         }
 
